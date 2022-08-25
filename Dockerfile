@@ -2,7 +2,7 @@
 FROM ubuntu:18.04
 
 # The Rust toolchain to use when building our image.  Set by `hooks/build`.
-ARG TOOLCHAIN=stable
+ARG TOOLCHAIN=1.63.0
 
 # The OpenSSL version to use. Here is the place to check for new releases:
 #
@@ -115,6 +115,7 @@ RUN echo "Building OpenSSL" && \
     rm /usr/local/musl/include/linux /usr/local/musl/include/asm /usr/local/musl/include/asm-generic && \
     rm -r /tmp/*
 
+ARG ZLIB_VERSION=1.2.12
 RUN echo "Building zlib" && \
     cd /tmp && \
     curl -fLO "http://zlib.net/zlib-$ZLIB_VERSION.tar.gz" && \
